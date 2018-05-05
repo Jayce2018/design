@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf8"/>
+	<constant name="struts.date.format" value="yyyy-MM-dd"></constant>
+	
+	<package name="default" namespace="/page" extends="struts-default">		
+		<action name="validateLogin" class="LoginAction" method="validateLogin">
+			<result name="myindex">/page/myindex.jsp</result>	
+			<result name="input" >/page/login.jsp</result>	
+			<result name="error" >/page/error.jsp</result>							
+		</action>	
+		
+		<action name="Ad_LoginAction" class="Ad_LoginAction" method="Ad_LoginAction">			
+			<result name="myindex" >/page/myindex.jsp</result>	
+			<result name="error" >/page/error.jsp</result>										
+		</action>
+		
+		<action name="selectUnionQnAction" class="selectUnionQnAction" method="selectUnionQn">			
+			<result name="success" >/page/customer_qn_view.jsp</result>										
+		</action>	
+		<action name="addCouponsAction" class="addCouponsAction" method="addCoupons">			
+			<result name="success" >/page/shangjia.jsp</result>														
+		</action>	
+	</package>
+	
+	<package name="main" namespace="" extends="json-default">		
+		<action name="selectQuestionnaireAction" class="selectQuestionnaireAction" method="selectQuestionnaire">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="finddfbQnAction" class="finddfbQnAction" method="finddfbQn">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findysjQnAction" class="findysjQnAction" method="findysjQn">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findyfbQnAction" class="findyfbQnAction" method="findyfbQn">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findwwcQnAction" class="findwwcQnAction" method="findwwcQn">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findCouponsByCustomerIdAction" class="findCouponsByCustomerIdAction" method="findCouponsByCustomerId">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findSerfinfoAction" class="findSerfinfoAction" method="findSerfinfo">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="addAnswerAction" class="addAnswerAction" method="addAnswer">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findAnswertableAction" class="findAnswertableAction" method="findAnswertable">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findAnswerAction" class="findAnswerAction" method="findAnswer">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>		
+		<action name="findGetcouponsByUseridAction" class="findGetcouponsByUseridAction" method="findGetcouponsByUserid">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findChartsdataAction" class="findChartsdataAction" method="findChartsdata">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="fuzzyFindSerfinfoAction" class="fuzzyFindSerfinfoAction" method="fuzzyFindSerfinfo">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="findSerfFlagAction" class="findSerfFlagAction" method="findSerfFlag">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="typesListAction" class="typesListAction" method="typesList">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="listCustomersAction" class="listCustomersAction" method="listCustomers">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="screenSerfinfoAction" class="screenSerfinfoAction" method="screenSerfinfo">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="fuzzyAllFindSerfinfoAction" class="fuzzyAllFindSerfinfoAction" method="fuzzyAllFindSerfinfo">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="screenAllSerfinfoAction" class="screenAllSerfinfoAction" method="screenAllSerfinfo">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>										
+		</action>
+		<action name="deleteQuotaAction" class="deleteQuotaAction" method="deleteQuota">			
+			<result  type="json">
+			<param name="root">result</param>
+			</result>							
+		</action>
+	</package>
+	
+	<package name="mypg" namespace="" extends="struts-default">		
+		<action name="addUser" class="addUserAction" method="addUser">			
+			<result name="success" >/page/login.jsp</result>	
+			<result name="input" >/page/zhuce.jsp</result>							
+		</action>
+		<action name="updateUserAction" class="updateUserAction" method="updateUser">			
+			<result name="success" >/page/login.jsp</result>	
+			<result name="input" >/page/update.jsp</result>							
+		</action>
+		<action name="selectUserAction" class="selectUserAction" method="selectUser">			
+			<result name="userlist" >/page/userlist.jsp</result>	
+			<result name="error" >/page/login.jsp</result>							
+		</action>
+		<action name="deleteUserAction" class="deleteUserAction" method="deleteUser">			
+			<result name="userlist" >/page/userlist.jsp</result>										
+		</action>
+		<action name="checkUserAction" class="checkUserAction" method="checkUser">			
+			<result name="userlist" >/page/userlist.jsp</result>										
+		</action>
+		<action name="addQuestionnaireAction" class="addQuestionnaireAction" method="addQuestionnaire">			
+			<result name="success" >/page/createtopic.jsp</result>										
+		</action>
+		<action name="addTopicAction" class="addTopicAction" method="addTopic">			
+			<result name="success" >/page/shangjia.jsp</result>										
+		</action>
+		<action name="addOptionAction" class="addOptionAction" method="addOption">			
+			<result name="success" >/page/shangjia.jsp</result>										
+		</action>
+		<action name="addQuotaAction" class="addQuotaAction" method="addQuota">			
+			<result name="success" >/page/ownqn.jsp</result>										
+		</action>
+		<action name="exitAction" class="exitAction" method="exit">	
+			<result name="success" >/page/myindex.jsp</result>															
+		</action>	
+		<action name="addCustomersAction" class="addCustomersAction" method="addCustomers">			
+			<result name="success" >/page/login.jsp</result>														
+		</action>	
+		<action name="outPdfAction" class="outPdfAction" method="selectUnionQn">			
+			<result name="success" >/page/out_pc_qn.jsp</result>														
+		</action>			
+		<action name="addGetcouponsAction" class="addGetcouponsAction" method="addGetcoupons">			
+			<result name="success" >/page/myindex.jsp</result>									
+		</action>
+		
+		
+	</package>
+	
+</struts>    

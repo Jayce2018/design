@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+
+*{margin: 0px;padding:0px;}
+.nav {position: relative;width:994px;height:52px;background: #404144;margin:-2px auto;}
+.nav li{list-style: none;float: left;line-height: 50px;}
+.nav li a{display: block;text-decoration: none;color: #FFFFFF;padding: 0px 15px;font-family: "微软雅黑";}
+.nav li a:hover .xs{display: block;}
+.nav li a:hover {background: #333333;}
+.nav li a .xs{border:1px solid #cccccc;border-top:none;display: none;width:992px;background:#FFFFFF;position: absolute;top:50px;left:0px;float:right;z-index:3}
+.nav li a .xs .xiao {position:absolute;top:-8px;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 8px solid #FFFFFF;width:0px;height:0px;z-index: 999;}
+.nav li:nth-child(1) .xiao {left:5px;}/*下拉箭头定位*/
+.nav li:nth-child(2) .xiao {left:120px;}
+.nav li:nth-child(3) .xiao {left:200px;}
+.nav li:nth-child(4) .xiao {left:255px;}
+.nav li:nth-child(5) .xiao {left:408px;}
+.nav li:nth-child(6) .xiao {left:467px;}
+.nav li:nth-child(7) .xiao {left:546px;}
+.nav li:nth-child(8) .xiao {left:576px;}
+.nav li:nth-child(9) .xiao {left:646px;}
+.nav li:nth-child(10) .xiao {left:706px;}

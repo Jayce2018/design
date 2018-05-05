@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+
+#right{BORDER: #CCC 5px solid; float:right;margin-RIGHT: 60px;}
+
+.list_r{PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #f9f9f9; z-index:5; width:200px; }
+
+.list_r LI {PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FLOAT: left; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; WIDTH: 200px; PADDING-TOP: 0px;}
+.list_r LI A {border-bottom: #eaeaea 1px dashed; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px;PADDING-TOP: 5px;HEIGHT: 25px; margin:0;}
+A {text-decoration:none;color:#666666;font-family:"微软雅黑";}
+A:hover { color: #3399FF } 
+
+#rt{background-color:#ccc; height:25px;font-family:"微软雅黑"; font-size:20px; padding:10px 10px; color:#0C73C8}
+#rt a{
+	padding-left: 20px;
+	margin-top: 5px;
+	padding-top: 10px;
+	top: 10px;
+	font-size:15px;
+}
+
+
+

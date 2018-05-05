@@ -1,0 +1,16 @@
+﻿@charset "utf-8";
+body {font-family: "microsoft yahei";}
+		.title {height:100px; width:100%; background:#f0f0f0;margin:-20px 0px; }	
+		.h1cc {color: #66CCCC; padding:25px 5%; font-family: "microsoft yahei"; }
+		.content {color: #66CCCC; margin:15px 5%; font-family: "microsoft yahei"; }		
+		.inputs{margin:15px 0; padding-top:20px}	
+		.inputs label{font-size:25px}	
+		.ipt{width:60%; height:40px}
+		.ipt1{width:90px;}
+		.left{margin-left:125px}
+		.cysub{width:220px; height:50px; background:#66CCCC; font-size:30px; font-family: "microsoft yahei"; color:#ffffff;margin:20px 30%}
+		.info{ font-family: "microsoft yahei";margin-left:75%}
+		.tixing{color:red; padding:25px 5%; font-family: "microsoft yahei"; font-size:12px;}
+
+		
+		

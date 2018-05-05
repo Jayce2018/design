@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd" >
+	
+	
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/design">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingResources">
+            <list>
+                <value>com/design/entity/User.hbm.xml</value>
+                <value>com/design/entity/Questionnaire.hbm.xml</value>
+                <value>com/design/entity/Topic.hbm.xml</value>
+                <value>com/design/entity/Option.hbm.xml</value>
+                <value>com/design/entity/Quota.hbm.xml</value>
+                <value>com/design/entity/Answer.hbm.xml</value>
+                <value>com/design/entity/Types.hbm.xml</value>
+                <value>com/design/entity/Customers.hbm.xml</value>
+                <value>com/design/entity/Coupons.hbm.xml</value>
+                <value>com/design/entity/Getcoupons.hbm.xml</value></list>
+        </property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<!--   <prop key="current_session_context_class">thread</prop>    
+				<prop key="hibernate.current_session_context_class">thread</prop>  -->
+			</props>
+		</property>
+		
+		</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="LoginDAO" class="com.design.dao.impl.LoginDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="QuestionnaireDAO" class="com.design.dao.impl.QuestionnaireDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="TopicDAO" class="com.design.dao.impl.TopicDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>		
+	<bean id="OptionDAO" class="com.design.dao.impl.OptionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="UnionQnDAO" class="com.design.dao.impl.UnionQnDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="QuotaDAO" class="com.design.dao.impl.QuotaDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="CustomersDAO" class="com.design.dao.impl.CustomersDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="CouponsDAO" class="com.design.dao.impl.CouponsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>		
+	<bean id="AnswerDAO" class="com.design.dao.impl.AnswerDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="GetcouponsDAO" class="com.design.dao.impl.GetcouponsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="TypesDAO" class="com.design.dao.impl.TypesDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<bean id="LoginBiz" class="com.design.biz.impl.LoginBizImpl">
+		<property name="loginDAO" ref="LoginDAO"/>
+	</bean>
+	<bean id="QuestionnaireBiz" class="com.design.biz.impl.QuestionnaireBizImpl">
+		<property name="questionnaireDAO" ref="QuestionnaireDAO"/>
+	</bean>
+	<bean id="TopicBiz" class="com.design.biz.impl.TopicBizImpl">
+		<property name="topicDAO" ref="TopicDAO"/>
+	</bean>
+	<bean id="OptionBiz" class="com.design.biz.impl.OptionBizImpl">
+		<property name="optionDAO" ref="OptionDAO"/>
+	</bean>
+	<bean id="UnionQnBiz" class="com.design.biz.impl.UnionQnBizImpl">
+		<property name="unionQnDAO" ref="UnionQnDAO"/>
+	</bean>
+	<bean id="QuotaBiz" class="com.design.biz.impl.QuotaBizImpl">
+		<property name="quotaDAO" ref="QuotaDAO"/>
+	</bean>
+	<bean id="CustomersBiz" class="com.design.biz.impl.CustomersBizImpl">
+		<property name="customersDAO" ref="CustomersDAO"/>
+	</bean>
+	<bean id="CouponsBiz" class="com.design.biz.impl.CouponsBizImpl">
+		<property name="couponsDAO" ref="CouponsDAO"/>
+	</bean>
+	<bean id="AnswerBiz" class="com.design.biz.impl.AnswerBizImpl">
+		<property name="answerDAO" ref="AnswerDAO"/>
+	</bean>	
+	<bean id="GetcouponsBiz" class="com.design.biz.impl.GetcouponsBizImpl">
+		<property name="getcouponsDAO" ref="GetcouponsDAO"/>
+	</bean>
+	<bean id="TypesBiz" class="com.design.biz.impl.TypesBizImpl">
+		<property name="typesDAO" ref="TypesDAO"/>
+	</bean>
+	
+	
+	<bean name="LoginAction" class="com.design.action.LoginAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>
+	</bean>
+	<bean name="addUserAction" class="com.design.action.addUserAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>
+	</bean>
+	<bean name="updateUserAction" class="com.design.action.updateUserAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>
+	</bean>
+	<bean name="selectUserAction" class="com.design.action.selectUserAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>
+	</bean>
+	<bean name="deleteUserAction" class="com.design.action.deleteUserAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>
+		<property name="customersBiz" ref="CustomersBiz"/>
+	</bean>
+	<bean name="checkUserAction" class="com.design.action.checkUserAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>
+	</bean>
+	<bean name="addQuestionnaireAction" class="com.design.action.addQuestionnaireAction" scope="prototype">
+		<property name="questionnaireBiz" ref="QuestionnaireBiz"/>
+	</bean>
+	<bean name="addTopicAction" class="com.design.action.addTopicAction" scope="prototype">
+		<property name="topicBiz" ref="TopicBiz"/>
+	</bean>
+	<bean name="addOptionAction" class="com.design.action.addOptionAction" scope="prototype">
+		<property name="optionBiz" ref="OptionBiz"/>		
+	</bean>
+	<bean name="selectUnionQnAction" class="com.design.action.selectUnionQnAction" scope="prototype">
+		<property name="unionQnBiz" ref="UnionQnBiz"/>		
+	</bean>
+	<bean name="selectQuestionnaireAction" class="com.design.action.selectQuestionnaireAction" scope="prototype">
+		<property name="questionnaireBiz" ref="QuestionnaireBiz"/>		
+	</bean>	
+	<bean name="finddfbQnAction" class="com.design.action.finddfbQnAction" scope="prototype">
+		<property name="questionnaireBiz" ref="QuestionnaireBiz"/>		
+	</bean>
+	<bean name="addQuotaAction" class="com.design.action.addQuotaAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="findysjQnAction" class="com.design.action.findysjQnAction" scope="prototype">
+		<property name="questionnaireBiz" ref="QuestionnaireBiz"/>		
+	</bean>
+	<bean name="findyfbQnAction" class="com.design.action.findyfbQnAction" scope="prototype">
+		<property name="questionnaireBiz" ref="QuestionnaireBiz"/>		
+	</bean>
+	<bean name="findwwcQnAction" class="com.design.action.findwwcQnAction" scope="prototype">
+		<property name="questionnaireBiz" ref="QuestionnaireBiz"/>		
+	</bean>
+	<bean name="exitAction" class="com.design.action.exitAction" scope="prototype">				
+	</bean>
+	<bean name="addCustomersAction" class="com.design.action.addCustomersAction" scope="prototype">
+		<property name="customersBiz" ref="CustomersBiz"/>		
+		<property name="loginBiz" ref="LoginBiz"/>		
+	</bean>
+	<bean name="addCouponsAction" class="com.design.action.addCouponsAction" scope="prototype">
+		<property name="couponsBiz" ref="CouponsBiz"/>		
+	</bean>
+	<bean name="findCouponsByCustomerIdAction" class="com.design.action.findCouponsByCustomerIdAction" scope="prototype">
+		<property name="couponsBiz" ref="CouponsBiz"/>		
+	</bean>
+	<bean name="findSerfinfoAction" class="com.design.action.findSerfinfoAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="addAnswerAction" class="com.design.action.addAnswerAction" scope="prototype">
+		<property name="answerBiz" ref="AnswerBiz"/>		
+	</bean>
+	<bean name="outPdfAction" class="com.design.action.outPdfAction" scope="prototype">
+		<property name="unionQnBiz" ref="UnionQnBiz"/>		
+	</bean>		
+	<bean name="findAnswertableAction" class="com.design.action.findAnswertableAction" scope="prototype">
+		<property name="answerBiz" ref="AnswerBiz"/>		
+	</bean>
+	<bean name="findAnswerAction" class="com.design.action.findAnswerAction" scope="prototype">
+		<property name="answerBiz" ref="AnswerBiz"/>		
+	</bean>
+	<bean name="addGetcouponsAction" class="com.design.action.addGetcouponsAction" scope="prototype">
+		<property name="getcouponsBiz" ref="GetcouponsBiz"/>		
+	</bean>
+	<bean name="findGetcouponsByUseridAction" class="com.design.action.findGetcouponsByUseridAction" scope="prototype">
+		<property name="getcouponsBiz" ref="GetcouponsBiz"/>		
+	</bean>
+	<bean name="findChartsdataAction" class="com.design.action.findChartsdataAction" scope="prototype">
+		<property name="answerBiz" ref="AnswerBiz"/>		
+	</bean>
+	<bean name="fuzzyFindSerfinfoAction" class="com.design.action.fuzzyFindSerfinfoAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="findSerfFlagAction" class="com.design.action.findSerfFlagAction" scope="prototype">
+		<property name="answerBiz" ref="AnswerBiz"/>		
+	</bean>
+	<bean name="typesListAction" class="com.design.action.typesListAction" scope="prototype">
+		<property name="typesBiz" ref="TypesBiz"/>		
+	</bean>
+	<bean name="listCustomersAction" class="com.design.action.listCustomersAction" scope="prototype">		
+		<property name="customersBiz" ref="CustomersBiz"/>
+	</bean>
+	<bean name="screenSerfinfoAction" class="com.design.action.screenSerfinfoAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="fuzzyAllFindSerfinfoAction" class="com.design.action.fuzzyAllFindSerfinfoAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="screenAllSerfinfoAction" class="com.design.action.screenAllSerfinfoAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="deleteQuotaAction" class="com.design.action.deleteQuotaAction" scope="prototype">
+		<property name="quotaBiz" ref="QuotaBiz"/>		
+	</bean>
+	<bean name="Ad_LoginAction" class="com.design.Ad_action.Ad_LoginAction" scope="prototype">
+		<property name="loginBiz" ref="LoginBiz"/>		
+	</bean>
+	
+	
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<tx:attributes>
+		<tx:method name="*" propagation="REQUIRED"/>
+	</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="bizMethods" expression="execution(* com.design.biz.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" />
+	</aop:config>
+	
+	</beans>
